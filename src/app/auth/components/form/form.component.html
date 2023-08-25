@@ -1,0 +1,35 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onAuthSubmit()">
+  <h4>{{headerProps}}</h4>
+  <div class="form__body">
+    <span class="error m-b-8">{{errorMessage}}</span>
+    <div class="form__field">
+      <input class="input" type="text" placeholder="email" formControlName="email" />
+      <span class="error"
+        *ngIf="form.get('email')?.invalid && form.get('email')?.touched && form.get('email')?.value.length > 0">
+        Не верно заполнено поле
+      </span>
+    </div>
+    <div *ngIf="headerProps === 'Регистрация'" class="form__field">
+      <input class="input" type="text" placeholder="Имя" formControlName="name" />
+      <span class="error"
+        *ngIf="form.get('name')?.invalid && form.get('name')?.touched && form.get('name')?.value.length > 0">
+        Не верно заполнено поле
+      </span>
+    </div>
+    <div class="form__field">
+      <input class="input" type="password" placeholder="Пароль" formControlName="password" />
+      <span class="error" *ngIf="form.get('password')?.invalid &&
+      form.get('password')?.touched && form.get('password')?.value.length > 0">
+        Не верно заполнено поле
+      </span>
+    </div>
+    <p *ngIf="headerProps !== 'Регистрация'">Нет учетной записи? <a class="link"
+        (click)="onGoTo('register')">Зарегистрируйтесь и войдите!</a>
+    </p>
+    <p *ngIf="headerProps === 'Регистрация'">У вас уже есть учетная запись? <a class="link"
+        (click)="onGoTo('login')">Войти!</a></p>
+  </div>
+  <button class="btn btn__form" type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid">
+    {{ getBtnText() }}
+  </button>
+</form>

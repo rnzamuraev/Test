@@ -1,0 +1,20 @@
+<app-before-login *ngIf="!isUser"></app-before-login>
+<div *ngIf="isUser" class="min-vh-100">
+  <div *ngIf="!post" class="container">
+    <app-loading></app-loading>
+  </div>
+  <div *ngIf="post">
+    <div class="banner">
+      <div class="container">
+        <h2 class="m-b-16">{{post.title}}</h2>
+        <app-badge-avatar [nameProps]="post.name"></app-badge-avatar>
+      </div>
+    </div>
+    <div class="article__body">
+      <div class="container">
+        <a class="link" (click)="onGoToBack()">go back</a>
+        <p class="m-t-16">{{post.body}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+h1 {
+  font-size: $h1-fz;
+  line-height: 57px;
+  font-weight: 700;
+}
+h2 {
+  font-size: $h2-fz;
+  line-height: 40px;
+  font-weight: 700;
+}
+h3 {
+  font-size: $h3-fz;
+  line-height: 36px;
+  font-weight: 700;
+}
+h4 {
+  font-size: $h4-fz;
+  line-height: 32px;
+  font-weight: 600;
+}
+h5 {
+  font-size: $h5-fz;
+  line-height: 28px;
+  font-weight: 600;
+}
+h6 {
+  font-size: $h6-fz;
+  line-height: 24px;
+  font-weight: 600;
+}
+@media (max-width: $media-md) {
+  h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}

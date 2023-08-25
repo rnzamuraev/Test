@@ -1,0 +1,86 @@
+import { IUserResponse } from "../shared/types/user.interface";
+
+export class ApiData {
+  static users: IUserResponse[] = [
+    {
+      id: 1,
+      name: "Иван Петриченко",
+      phone: "+79995553310",
+      email: "ivan@gmail.com",
+      avatar: "",
+      password: "akjcbackj223souw",
+    },
+    {
+      id: 2,
+      name: "Михаил Непомнящий",
+      phone: "+79995553311",
+      email: "mihail@gmail.com",
+      avatar: "",
+      password: "akjcback13134souw",
+    },
+    {
+      id: 3,
+      name: "Олег Петров",
+      phone: "+79995553312",
+      email: "oleg@gmail.com",
+      avatar: "",
+      password: "akjc463kjasouw",
+    },
+    {
+      id: 4,
+      name: "Владилен Минин",
+      phone: "+79995553313",
+      email: "vladilen@gmail.com",
+      avatar: "",
+      password: "akjcbackw564ouw",
+    },
+    {
+      id: 5,
+      name: "Виктор Денисов",
+      phone: "+79995553314",
+      email: "viktor@gmail.com",
+      avatar: "",
+      password: "akjcb8675jasco",
+    },
+    {
+      id: 6,
+      name: "Светлана Иванова",
+      phone: "+79995553315",
+      email: "sveta@gmail.com",
+      avatar: "",
+      password: "vsg46gpo",
+    },
+    {
+      id: 7,
+      name: "Виктория Савина",
+      phone: "+79995553316",
+      email: "viktoria@gmail.com",
+      avatar: "",
+      password: "a1224kjasouw",
+    },
+    {
+      id: 8,
+      name: "Надежда Кадышева",
+      phone: "+79995553317",
+      email: "nadegda@gmail.com",
+      avatar: "",
+      password: "akjcbackja335w",
+    },
+    {
+      id: 9,
+      name: "Иосиф Кабзон",
+      phone: "+79995553318",
+      email: "iosif@gmail.com",
+      avatar: "",
+      password: "akjc232kjasouw",
+    },
+    {
+      id: 10,
+      name: "Лев Лещенко",
+      phone: "+79995553319",
+      email: "lev@gmail.com",
+      avatar: "",
+      password: "976cbackjasouw",
+    },
+  ];
+}

@@ -1,0 +1,49 @@
+// *** Color
+$white: #ffffff;
+$base-color: #1e293b;
+$primary: #3b82f6;
+$secondary: #64748b;
+$danger: #ef4444;
+
+// *** Text
+// text-color
+$color-base: $base-color;
+// font-size
+$text-fz-base: 16px;
+$text-fz-sm: 14px;
+$text-fz-xs: 12px;
+$h1-fz: 48px;
+$h2-fz: 36px;
+$h3-fz: 30px;
+$h4-fz: 24px;
+$h5-fz: 20px;
+$h6-fz: 18px;
+
+// *** Button
+$btn-p: 8px 20px;
+$btn-fz: $text-fz-sm;
+$btn-text: $white;
+$btn-bg: $primary;
+$btn-br: 1px solid $primary;
+$btn-br-r: 4px;
+
+// *** Media
+$media-xl: 1400px;
+$media-lg: 1200px;
+$media-md: 992px;
+$media-sm: 768px;
+$media-xs: 576px;
+
+// *** Container
+$container-xxl: 1296px;
+$container-xl: 1140px;
+$container-lg: 940px;
+$container-md: 718px;
+$container-sm: 540px;
+$container-xs: 280px;
+
+// *** Header
+$header-height: 58px;
+
+// *** Footer
+$footer-height: 60px;

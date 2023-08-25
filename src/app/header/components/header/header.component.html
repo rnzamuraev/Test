@@ -1,0 +1,20 @@
+<div class="header">
+  <div class="container">
+    <div class="header__wrap">
+      <a class="btn m-r-8" (click)="onGoTo('')">
+        <span class="material-icons m-r-8">home</span>
+        Главная
+      </a>
+      <a *ngIf="!isLogin" class="btn btn__auth" (click)="onGoTo('login')">
+        <span class="material-icons m-r-8">person_outline</span>
+        Войти
+      </a>
+      <a *ngIf="isLogin" class="btn btn__auth btn__icon-arrow-down" [matMenuTriggerFor]="menu">
+        <span class="material-icons m-r-8">person_outline</span>{{userName}}</a>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item>Настройки</a>
+        <a mat-menu-item (click)="onGoTo('logout')">Выход</a>
+      </mat-menu>
+    </div>
+  </div>
+</div>

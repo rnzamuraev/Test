@@ -1,0 +1,26 @@
+.btn {
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $btn-fz;
+  font-weight: 500;
+  line-height: 20px;
+  color: $btn-text;
+  background-color: $btn-bg;
+  border: $btn-br;
+  border-radius: $btn-br-r;
+  outline: none;
+  cursor: pointer;
+  &__form {
+    padding: 12px 40px;
+  }
+  &__icon-arrow-down::after {
+    content: "";
+    margin-left: 8px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: center / contain no-repeat url("../../img/icons/chevron-down.svg");
+  }
+}

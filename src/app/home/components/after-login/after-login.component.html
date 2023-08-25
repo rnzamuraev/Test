@@ -1,0 +1,23 @@
+<div class="after-login min-vh-100">
+  <div class="container">
+    <app-loading *ngIf="!allPostsProps"></app-loading>
+    <mat-tab-group *ngIf="userPostsProps" animationDuration="0ms" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Лента ваших статей">
+        <p *ngIf="userPostsProps && userPostsProps.length === 0">Здесь нет статей... пока.</p>
+        <ul *ngIf="userPostsProps && userPostsProps.length > 0" class="d-flex col">
+          <li *ngFor="let userPost of userPostsProps" class="after-login__post">
+            <app-post [postProps]="userPost"></app-post>
+          </li>
+        </ul>
+      </mat-tab>
+      <mat-tab label="Глобальная лента">
+        <p *ngIf="allPostsProps && allPostsProps.length === 0">Здесь нет статей... пока.</p>
+        <ul *ngIf="allPostsProps && allPostsProps.length > 0" class="d-flex col">
+          <li *ngFor="let post of allPostsProps" class="after-login__post">
+            <app-post [postProps]="post"></app-post>
+          </li>
+        </ul>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

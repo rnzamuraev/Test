@@ -1,0 +1,6 @@
+<app-badge-avatar [nameProps]="postProps.name"></app-badge-avatar>
+<div class="post-body" (click)="onOpenPost(postProps.id)">
+  <h4>{{postProps.title}}</h4>
+  <p class="ellipsis">{{postProps.body}}</p>
+</div>
+<a class="link" (click)="onOpenPost(postProps.id)">Читать...</a>

@@ -1,0 +1,2 @@
+<app-before-login *ngIf="!isUser"></app-before-login>
+<app-after-login *ngIf="isUser" [allPostsProps]="allPosts" [userPostsProps]="userPosts"></app-after-login>

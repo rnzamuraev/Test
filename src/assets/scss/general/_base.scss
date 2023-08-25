@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: $text-fz-base;
+  font-weight: 400;
+  line-height: 24px;
+  color: $color-base;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $container-xxl;
+}
+
+@media (max-width: $media-xl) {
+  .container {
+    max-width: $container-xl;
+  }
+}
+@media (max-width: $media-lg) {
+  .container {
+    max-width: $container-lg;
+  }
+}
+@media (max-width: $media-md) {
+  .container {
+    max-width: $container-md;
+  }
+}
+@media (max-width: $media-sm) {
+  .container {
+    max-width: $container-sm;
+  }
+}
+@media (max-width: $media-xs) {
+  .container {
+    max-width: $container-sm;
+    padding: 0 15px;
+  }
+}
