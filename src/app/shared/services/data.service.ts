@@ -21,7 +21,6 @@ export class DataService {
   public getPosts(): Observable<INewPost[]> {
     return zip(this.http.get<IPost[]>(url), this.userDaoArray.get(), this.postDaoArray.get()).pipe(
       map(data => {
-        console.log(data);
         const newPosts: INewPost[] = [];
         data[0].forEach(post => {
           for (let i = 0; i < data[1].length; i++) {
@@ -33,7 +32,6 @@ export class DataService {
           }
         });
         const newAllPosts = [...newPosts, ...data[2]];
-        console.log(newAllPosts);
         return newAllPosts;
       }),
       catchError(() => {
@@ -49,7 +47,6 @@ export class DataService {
       this.userDaoArray.get()
     ).pipe(
       map(data => {
-        console.log(data);
         let post!: INewPost;
         if (data[0]) {
           const user = this._getUser(data[2], data[0]);

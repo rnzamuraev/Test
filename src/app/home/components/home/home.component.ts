@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   public isUser!: boolean;
   public allPosts!: INewPost[];
   public userPosts!: INewPost[];
-  // public userId!: number;
 
   constructor(private dataService: DataService, private stateService: StateService) {}
 
@@ -31,12 +30,10 @@ export class HomeComponent implements OnInit {
   }
 
   private initAllPosts(data: INewPost[]) {
-    console.log(data);
     this.allPosts = data;
   }
 
   private getUserPosts(posts: INewPost[], user: IUserResponse | null) {
-    console.log(posts, user);
     if (user === null) {
       this.isUser = false;
       return;
