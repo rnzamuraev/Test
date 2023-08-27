@@ -71,7 +71,6 @@ export class FormComponent implements OnInit {
 
   public onChangeInputType() {
     this.isInputType = !this.isInputType;
-    console.log(this.isInputType);
   }
 
   private addNewUser(data: IRegisterRequest) {
