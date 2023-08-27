@@ -4,6 +4,9 @@
 @import "./calc";
 @import "./error";
 
+.relative {
+  position: relative;
+}
 .pointer {
   cursor: pointer;
 }

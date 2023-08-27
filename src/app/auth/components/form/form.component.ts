@@ -12,11 +12,14 @@ import { StateService } from "src/app/shared/services/state.service";
   styleUrls: ["./form.component.scss"],
 })
 export class FormComponent implements OnInit {
+  public unacceptableSymbols = "\"№;|^:?*)(_-}{+='><,`.~][/\\";
+  public isInputType = true;
+  public isSubmitted = false;
+  public formErrorMessage = "";
+  public form!: FormGroup;
+
   @Input()
   public headerProps!: string;
-  public errorMessage = "";
-  public isSubmitted = false;
-  public form!: FormGroup;
 
   constructor(
     private router: Router,
@@ -37,12 +40,12 @@ export class FormComponent implements OnInit {
         ]),
         name: new FormControl("", [
           Validators.required,
-          Validators.pattern(/^[а-яё][а-яё]+[ _]?[А-ЯЁ]*$/i),
+          Validators.pattern(/^[a-zа-яё][a-zа-яё]+[ _]?[A-ZА-ЯЁ]*$/i),
         ]),
         password: new FormControl("", [
           Validators.required,
-          // Validators.pattern(/^(?=.*[\d])(?=.*[A-Z])[^(+,"=.№{|}?`;'~[/\]):\\_-]{6,}$/),
-          Validators.pattern(/^[^(+,"=.№{|}?`;'~[/\]):\\_-]{6,}$/),
+          Validators.maxLength(20),
+          Validators.pattern(/^(?=.*[\d])(?=.*[A-ZА-ЯЁ])[^+},"=\]>.№{|?`^*;'~[/<):\\_(-]{6,}$/),
         ]),
       });
       return;
@@ -53,11 +56,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[^@\s]+@[^@\s][\w]+\.[a-z]{2,}$/i),
       ]),
-      password: new FormControl("", [
-        Validators.required,
-        // Validators.pattern(/^(?=.*[\d])(?=.*[A-Z])[^(+,"=.№{|}?`;'~[/\]):\\_-]{6,}$/),
-        Validators.pattern(/^[^(+,"=.№{|}?`;'~[/\]):\\_-]{6,}$/),
-      ]),
+      password: new FormControl("", [Validators.required]),
     });
   }
 
@@ -68,6 +67,11 @@ export class FormComponent implements OnInit {
 
   public onGoTo(value: string) {
     this.router.navigate([`/${value}`]);
+  }
+
+  public onChangeInputType() {
+    this.isInputType = !this.isInputType;
+    console.log(this.isInputType);
   }
 
   private addNewUser(data: IRegisterRequest) {
@@ -93,10 +97,10 @@ export class FormComponent implements OnInit {
   private isEmail(email: string) {
     return this.dataService.isUser(email).subscribe(data => {
       if (data === true) {
-        this.errorMessage = "Такой пользователь уже существует, введите другую почту";
+        this.formErrorMessage = "Такой пользователь уже существует, введите другую почту";
       } else {
         this.addNewUser(this.form.value);
-        this.errorMessage = "";
+        this.formErrorMessage = "";
         this.onGoTo("");
       }
     });
@@ -104,12 +108,35 @@ export class FormComponent implements OnInit {
   private isUser(form: ILoginRequest) {
     return this.dataService.isUser(form.email, form.password).subscribe(data => {
       if (data === false) {
-        this.errorMessage = "Почта или пароль указаны неверно";
+        this.formErrorMessage = "Почта или пароль указаны неверно";
       } else if (data !== true) {
         this.stateService.setUser$(data);
-        this.errorMessage = "";
+        this.formErrorMessage = "";
         this.onGoTo("");
       }
     });
+  }
+  public getTextInvalidFormPass() {
+    let message!: string;
+    if (this.form.value.password.length <= 6) {
+      message = "Должно быть не менее 7 символов";
+    } else if (this.form.value.password.length > 20) {
+      message = "Должно быть не более 20 символов";
+    } else if (this.validCharactersFilter()) {
+      message = `Не допустимые символы: ${this.unacceptableSymbols}`;
+    } else {
+      message = "Пароль должен содержать как минимум 1 заглавную букву и 1 цифру.";
+    }
+    return message;
+  }
+
+  private validCharactersFilter() {
+    let isValid = false;
+    for (let j = 0; j < this.unacceptableSymbols.length; j++) {
+      for (let i = 0; i < this.form.value.password.length; i++) {
+        if (this.form.value.password[i] === this.unacceptableSymbols[j]) isValid = true;
+      }
+    }
+    return isValid;
   }
 }

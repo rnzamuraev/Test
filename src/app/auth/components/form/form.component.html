@@ -1,7 +1,7 @@
 <form [formGroup]="form" class="form" (ngSubmit)="onAuthSubmit()">
   <h4>{{headerProps}}</h4>
   <div class="form__body">
-    <span class="error m-b-8">{{errorMessage}}</span>
+    <span class="error m-b-8">{{formErrorMessage}}</span>
     <div class="form__field">
       <input class="input" type="text" placeholder="email" formControlName="email" />
       <span class="error"
@@ -17,10 +17,18 @@
       </span>
     </div>
     <div class="form__field">
-      <input class="input" type="password" placeholder="Пароль" formControlName="password" />
+      <div class="relative">
+        <input class="input input__visible" [type]="isInputType ? 'password' : 'text'" placeholder="Пароль"
+          formControlName="password" />
+        <a class="icon icon__visible" (click)="onChangeInputType()">
+          <span class="material-icons">
+            {{isInputType ? 'visibility_off' : 'visibility_on'}}
+          </span>
+        </a>
+      </div>
       <span class="error" *ngIf="form.get('password')?.invalid &&
       form.get('password')?.touched && form.get('password')?.value.length > 0">
-        Не верно заполнено поле
+        {{getTextInvalidFormPass()}}
       </span>
     </div>
     <p *ngIf="headerProps !== 'Регистрация'">Нет учетной записи? <a class="link"

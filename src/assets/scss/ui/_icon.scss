@@ -1,0 +1,17 @@
+.icon {
+  height: 18px;
+  color: $secondary;
+  cursor: pointer;
+  &__visible {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    z-index: 10;
+    span {
+      width: 18px;
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+}

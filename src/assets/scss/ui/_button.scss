@@ -23,4 +23,22 @@
     display: inline-block;
     background: center / contain no-repeat url("../../img/icons/chevron-down.svg");
   }
+  &__icon-visible {
+    padding: 0;
+    right: 10px;
+    font-size: 18px;
+    line-height: 18px;
+    color: $secondary;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    span {
+      width: 20px;
+      font-size: 20px;
+      line-height: 18px;
+    }
+  }
 }
